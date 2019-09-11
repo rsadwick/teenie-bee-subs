@@ -14,7 +14,8 @@ class SubscriptionProvider extends Component {
 
         this.state = {
           subscriptions: [],
-          selectedSubscription: {}
+          selectedSubscription: {},
+          ringSize: 0
       };
     }
 
@@ -32,12 +33,18 @@ class SubscriptionProvider extends Component {
         this.setState({ selectedSubscription: selectedSubscription });
     }
 
+    handleRingSizeChange = size => {
+        this.setState({ringSize: size});
+    }
+
     render () {
         return (
         <SubscriptionContext.Provider
             value={{
                 subscriptions: this.state.subscriptions,
-                selectedSubscription: this.state.selectedSubscription
+                selectedSubscription: this.state.selectedSubscription,
+                ringSize: this.state.ringSize,
+                handleRingSizeChange: this.handleRingSizeChange
 
             }}>
         

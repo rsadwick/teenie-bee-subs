@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import SubscriptionPlans from '../components/SubscriptionPlans'
+import RingSizes from '../components/RingSizes'
 
 const Home = () => (
   <div>
@@ -18,6 +19,7 @@ const Home = () => (
         To get started, edit <code>pages/index.js</code> and save to reload.
       </p>
 
+      <RingSizes/>
       <SubscriptionPlans/>
  
     </div>
