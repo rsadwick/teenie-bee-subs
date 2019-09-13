@@ -9,12 +9,19 @@ export default class SubscriptionPlans extends React.Component{
     render(){
         return(
             <SubscriptionConsumer>
-                {({ subscriptions }) => (
+                {({ subscriptions, handleSubscriptionChange }) => (
                     <ul>
+                        <h3>Subscription Plan</h3>
                         {subscriptions.map((subscription, index) => (
                             <li key={index}>
-                                <p>{subscription.title}</p>
-                                <p>{subscription.price}</p>
+                                 <label>
+                                    <input type="radio" name="subscriptionType" 
+                                        value={subscription.sku}
+                                        onClick={() => handleSubscriptionChange(subscription.sku)}
+                                    />
+                                    {subscription.title}
+                                </label> 
+                               <p>{subscription.billingInfo}</p>
                             </li>
                         ))}
                     </ul>

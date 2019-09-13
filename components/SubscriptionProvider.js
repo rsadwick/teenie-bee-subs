@@ -1,26 +1,29 @@
 import React, { Component } from 'react'
 import * as _ from 'lodash';
 
-
-/* First we will make a new context */
 const SubscriptionContext = React.createContext()
 
-/* Then create a provider Component */
 class SubscriptionProvider extends Component {
     constructor(props) {
         super(props);
 
         this.handleSubscriptionChange = this.handleSubscriptionChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
           subscriptions: [],
           selectedSubscription: {},
-          ringSize: 0
+          ringSize: 0,
+          ringSizeCollection: []
       };
     }
 
     componentDidMount() {
-       this.setState({subscriptions: this.props.subscriptions});
+        this.setState({
+            subscriptions: this.props.subscriptions,
+            ringSizeCollection: this.props.ringSizeCollection
+        });
+      
     }
 
     componentDidUpdate() {
@@ -37,6 +40,12 @@ class SubscriptionProvider extends Component {
         this.setState({ringSize: size});
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        //todo: submit to Stripe API
+        console.log(this.state.selectedSubscription, this.state.ringSize);
+    }
+
     render () {
         return (
         <SubscriptionContext.Provider
@@ -44,7 +53,10 @@ class SubscriptionProvider extends Component {
                 subscriptions: this.state.subscriptions,
                 selectedSubscription: this.state.selectedSubscription,
                 ringSize: this.state.ringSize,
-                handleRingSizeChange: this.handleRingSizeChange
+                ringSizeCollection: this.state.ringSizeCollection,
+                handleRingSizeChange: this.handleRingSizeChange,
+                handleSubscriptionChange: this.handleSubscriptionChange,
+                handleSubmit: this.handleSubmit
 
             }}>
         

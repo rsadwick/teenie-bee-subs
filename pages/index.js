@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import SubscriptionPlans from '../components/SubscriptionPlans'
 import RingSizes from '../components/RingSizes'
+import SubmitButton from '../components/SubmitButton'
 
 const Home = () => (
   <div>
@@ -14,17 +15,18 @@ const Home = () => (
     <Nav />
 
     <div className='hero'>
-      <h1 className='title'>Welcome to Next.js!</h1>
-      <p className='description'>
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
+      <h1 className='title'>Jewlry subs</h1>
 
       <RingSizes/>
       <SubscriptionPlans/>
+      <SubmitButton/>
  
     </div>
 
     <style jsx>{`
+      body{
+        font-family: 'Roboto'
+      }
       .hero {
         width: 100%;
         color: #333;

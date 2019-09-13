@@ -9,30 +9,23 @@ export default class RingSizes extends React.Component{
     render(){
         return(
             <SubscriptionConsumer>
-                {({ handleRingSizeChange }) => (
-                    <div>
+                {({ ringSizeCollection, handleRingSizeChange }) => (
+                    
+                    <ul>
+                    <h3>Ring Size</h3>
+                    {ringSizeCollection.map((ring, index) => (
+                        <li key={index}>
                             <label>
-                                <input type="radio" name="ringSize" value="5"/>
-                                5
+                                <input type="radio" name="ringSize" 
+                                    value={ring.size}
+                                    onClick={() => handleRingSizeChange(ring.size)}
+                                />
+                                {ring.size}
                             </label> 
-                            <label>
-                                <input type="radio" name="ringSize" value="5"/>
-                                6
-                            </label> 
-                            <label>
-                                <input type="radio" name="ringSize" value="5"/>
-                                7
-                            </label> 
-                            <label>
-                                <input type="radio" name="ringSize" value="5"/>
-                                8
-                            </label> 
-                            <label>
-                                <input type="radio" name="ringSize" value="5"/>
-                                9
-                            </label> 
-                           
-                    </div>
+                      
+                        </li>
+                    ))}
+                    </ul>
                 )}
             </SubscriptionConsumer>
         )

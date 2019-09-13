@@ -2,6 +2,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 import SubscriptionProvider from '../components/SubscriptionProvider';
 import subscriptions from '../data/Subscriptions';
+import ringSizeCollection from '../data/RingSizeCollection';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -33,7 +34,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <Container>
-        <SubscriptionProvider subscriptions={subscriptions}>
+        <SubscriptionProvider 
+            subscriptions={subscriptions} 
+            ringSizeCollection={ringSizeCollection}>
           <Component {...pageProps} />
         </SubscriptionProvider>
       </Container>
