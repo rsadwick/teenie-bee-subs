@@ -42,10 +42,22 @@ class SubscriptionProvider extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        //todo: submit to Stripe API
-        console.log(this.state.selectedSubscription, this.state.ringSize);
+        let stripe = Stripe('pk_test_iN9qaP9mIVtUCc9Yp9BHRji000m5JAbZ35');
+            stripe.redirectToCheckout({
+                items: [{plan: this.state.selectedSubscription.sku, quantity: 1}],
+                successUrl: 'https://3ee.com/',
+                cancelUrl: 'https://3ee.com/games',
+                
+            })
+            .then(function (result) {
+                if (result.error) {
+                    var displayError = document.getElementById('error-message');
+                    displayError.textContent = result.error.message;
+                }
+        });
+          
     }
-
+    
     render () {
         return (
         <SubscriptionContext.Provider

@@ -10,6 +10,7 @@ const Home = () => (
   <div>
     <Head>
       <title>Home</title>
+      <script src="https://js.stripe.com/v3" key="stripelib" />
     </Head>
 
     <Nav />
