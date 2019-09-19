@@ -14,7 +14,8 @@ class SubscriptionProvider extends Component {
           subscriptions: [],
           selectedSubscription: {},
           ringSize: 0,
-          ringSizeCollection: []
+          ringSizeCollection: [],
+          stripeErrorMessage: ''
       };
     }
 
@@ -51,8 +52,7 @@ class SubscriptionProvider extends Component {
             })
             .then(function (result) {
                 if (result.error) {
-                    var displayError = document.getElementById('error-message');
-                    displayError.textContent = result.error.message;
+                    this.setState({stripeErrorMessage: result.error.message});
                 }
         });
           
@@ -68,7 +68,8 @@ class SubscriptionProvider extends Component {
                 ringSizeCollection: this.state.ringSizeCollection,
                 handleRingSizeChange: this.handleRingSizeChange,
                 handleSubscriptionChange: this.handleSubscriptionChange,
-                handleSubmit: this.handleSubmit
+                handleSubmit: this.handleSubmit,
+                stripeErrorMessage: this.state.stripeErrorMessage
 
             }}>
         

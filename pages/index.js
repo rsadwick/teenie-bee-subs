@@ -5,6 +5,7 @@ import Nav from '../components/nav'
 import SubscriptionPlans from '../components/SubscriptionPlans'
 import RingSizes from '../components/RingSizes'
 import SubmitButton from '../components/SubmitButton'
+import StatusBar from '../components/StatusBar'
 
 const Home = () => (
   <div>
@@ -17,7 +18,7 @@ const Home = () => (
 
     <div className='hero'>
       <h1 className='title'>Jewlry subs</h1>
-
+      <StatusBar/>
       <RingSizes/>
       <SubscriptionPlans/>
       <SubmitButton/>
