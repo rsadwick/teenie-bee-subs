@@ -11,7 +11,6 @@ export default class StatusBar extends React.Component{
             <SubscriptionConsumer>
 
                 {({stripeErrorMessage}) => {
-                    console.log(stripeErrorMessage);
                     if(stripeErrorMessage && stripeErrorMessage !== ''){
                         return <div className="status-bar">
                            <p>{stripeErrorMessage}</p>                 
